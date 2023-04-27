@@ -23,7 +23,6 @@ void signalHandler(int sinal) {
         auto time_now = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::seconds>(time_now - time_start);
         cout << "Olá, recebi o sinal " << sinal << "! O processo começou a executar há " << duration.count() << " segundos" << endl;
-        
         // cout << "Sinal " << sinal <<  "recebido. \nMensagem: Processo em execução..." << endl;
         // isRunning = true;
     }
@@ -54,14 +53,28 @@ int main(int argc, char *argv[]) {
     signal(2, signalHandler);
     signal(3, signalHandler);
 
-    while (true) {
-        // Aguarda a chegada de sinais
-        if (modoEspera == "busy") {
-            sleep(3);
+    if (modoEspera == "busy") {
+        while (true) {
+            sleep(2);
             cout << count << endl;
-            count ++;
+            count ++;            
         }
     }
+    else {
+        while (true) {
+            
+        }
+        
+    }
+
+    // while (true) {
+    //     // Aguarda a chegada de sinais
+    //     if (modoEspera == "busy") {
+    //         sleep(3);
+    //         cout << count << endl;
+    //         count ++;
+    //     }
+    // }
 
     return 0;
 }
